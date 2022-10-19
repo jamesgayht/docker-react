@@ -1,0 +1,15 @@
+# select the base image
+FROM node:16-alpine
+
+# create the working directory so as not to override any files by accident
+WORKDIR '/app'
+
+# copy the package.json file to prepare for the dependency installation 
+COPY ./package.json ./
+# install all the required dependencies
+RUN npm install
+# once installed, copy everything else from the directory
+COPY ./ ./
+
+# input the commands you want to run upon opening the container
+CMD ["npm", "run", "start"]
