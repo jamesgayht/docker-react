@@ -13,3 +13,30 @@ before_install:
 
 script:
   - docker run -e CI=true jamesgayht/docker-react npm run test
+
+# travisci is configured by default to deploy application to certain hosting provides e.g. AWS or digitalocean - so by saying elasticbeanstalk we are telling travis to deploy automatically  
+deploy:
+  provider: elasticbeanstalk
+  
+  # depends on your elastic beanstalk link e.g. 
+  # Dockerreact-env.eba-5vw8gfau.ap-northeast-1.elasticbeanstalk.com
+  region: "ap-northeast-1"
+  
+  # name in elasticbeanstalk
+  app: "Dockerreact"
+
+  #get the name from elasticbeanstalk
+  env: "Dockerreact-env"
+
+  # travis will take all your files from github and zip them and copy to an S3 bucket in AWS (a form of hard drive running on AWS)
+  bucket_name: "elasticbeanstalk-ap-northeast-1-048335957869"
+  # initially should be same as your app name
+  bucket_path: "Dockerreact"
+
+  # configure the file so that only updates on the master branch get update to production
+  on:
+    branch: master
+  
+  # configured on travis.ci in settings
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
