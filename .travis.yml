@@ -1,0 +1,15 @@
+languge: generic
+
+# whenever we run docker we need superuser permissions
+sudo: required
+# travis ci will automatically install docker into the running container 
+services:
+  - docker
+
+# commands to run before the installation, since we wont be copying the image id manually we use the tag feature e.g. below
+# docker build -t <docker account name>/<github repo name> -f <source of docker file/commands> .
+before_install:
+  - docker build -t jamesgayht/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jamesgayht/docker-react npm run test
