@@ -23,7 +23,7 @@ deploy:
   region: "ap-northeast-1"
   
   # name in elasticbeanstalk
-  app: "Dockerreact"
+  app: "docker-react"
 
   #get the name from elasticbeanstalk
   env: "Dockerreact-env"
@@ -31,7 +31,7 @@ deploy:
   # travis will take all your files from github and zip them and copy to an S3 bucket in AWS (a form of hard drive running on AWS)
   bucket_name: "elasticbeanstalk-ap-northeast-1-048335957869"
   # initially should be same as your app name
-  bucket_path: "Dockerreact"
+  bucket_path: "docker-react"
 
   # configure the file so that only updates on the master branch get update to production
   on:
