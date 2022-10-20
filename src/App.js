@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          i was changed
+          I was changed on the feature branch 
           <br></br>
           Bye there!
         </p>
